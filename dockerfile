@@ -11,7 +11,7 @@ COPY . /var/www/html/
 ENV MARIADB_ROOT_PASSWORD root
 ENV MARIADB_DATABASE test
 ENV MARIADB_USER test
-ENV MARIADB_PASSWORD test 
+ENV MARIADB_PASSWORD test
 # Instala el servidor MySQL (puedes usar mariadb-server si prefieres)
 RUN apt-get update && apt-get install -y mariadb-server
 
