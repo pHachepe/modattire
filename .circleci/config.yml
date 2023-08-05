@@ -8,4 +8,4 @@ jobs:
       # Ejecuta el servidor PHP local
       - run:
           name: Run PHP Development Server
-          command: php -S 0.0.0.0:8080 -t public
+          command: nohup php -S 0.0.0.0:8080 -t public > /dev/null 2>&1 &
