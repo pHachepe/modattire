@@ -5,7 +5,14 @@ jobs:
       - image: php:8.1
     steps:
       - checkout
-      # install docker-compose
+      # Instala Composer
       - run:
-          name: Install Composer Dependencies
-          command: composer install
+          name: Install Composer
+          command: |
+            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+            php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+            php -r "unlink('composer-setup.php');"
+      - run:
+          name: Install dependencies
+          command: |
+            composer install
