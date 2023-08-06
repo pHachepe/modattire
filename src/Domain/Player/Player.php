@@ -23,7 +23,7 @@ class Player extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var String[]
      */
     protected $fillable = [
         'codalumno',
