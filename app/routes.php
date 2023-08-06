@@ -40,17 +40,4 @@ return function (App $app) {
         $group->put('/{id}', UpdatePlayerAction::class);
         $group->delete('/{id}', DeletePlayerAction::class);
     });
-
-    // TODO: Ejemplo sin usar Eloquent
-    /*
-    $app->get('/db-test', function (Request $request, Response $response) {
-        $db = $this->get(PDO::class);
-        $sth = $db->prepare("SELECT * FROM Jugadores ORDER BY nombre ASC");
-        $sth->execute();
-        $data = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $payload = json_encode($data);
-        $response->getBody()->write($payload);
-        return $response->withHeader('Content-Type', 'application/json');
-    });
-    */
 };
