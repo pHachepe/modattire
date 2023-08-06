@@ -11,7 +11,7 @@ class Player extends Model
      *
      * @var string
      */
-    protected $table = 'Jugadores';
+    protected $table = 'jugadores';
 
     /**
      * The primary key associated with the table.
@@ -23,7 +23,7 @@ class Player extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var String[]
      */
     protected $fillable = [
         'codalumno',

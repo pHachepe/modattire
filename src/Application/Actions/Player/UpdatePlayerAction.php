@@ -18,7 +18,7 @@ class UpdatePlayerAction extends PlayerAction
 
         $player = $this->playerRepository->findPlayerById($id);
         $player->fill($playerData);
-        
+
         $this->playerRepository->save($player);
 
         $this->logger->info("Player with ID `${id}` was updated.");

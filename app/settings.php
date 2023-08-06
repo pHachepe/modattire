@@ -21,15 +21,19 @@ return function (ContainerBuilder $containerBuilder) {
                     'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
                     'level' => Logger::DEBUG,
                 ],
-                // TODO: Sacar las variables de conexion a la base de datos a .env
+                // postgres://fl0user:0wYvtHL4fzsZ@ep-spring-hall-35501515.eu-central-1.aws.neon.tech:5432/modattire-bd?sslmode=require
                 'db' => [
-                     'driver' => 'mysql',
-                     'host' => 'localhost',
-                     'database' => 'Baloncesto',
-                     'username' => 'root',
-                     'password' => 'toor',
-                     'charset' => 'utf8mb4',
-                     'collation' => 'utf8mb4_unicode_ci',
+                    'driver' => 'pgsql',
+                    'host' => 'ep-spring-hall-35501515.eu-central-1.aws.neon.tech',
+                    'port' => '5432',
+                    'database' => 'modattire-bd',
+                    'username' => 'fl0user',
+                    'password' => '0wYvtHL4fzsZ',
+                    'charset' => 'utf8',
+                    'collation' => 'utf8_unicode_ci',
+                    'prefix' => '',
+                    'schema' => 'public',
+                    'sslmode' => 'require',
                 ],
             ]);
         }

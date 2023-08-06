@@ -15,8 +15,10 @@ class CreatePlayerAction extends PlayerAction
     protected function action(): Response
     {
         $playerData = $this->request->getParsedBody();
+        // validate player data before creating the player, optionally
+        $this->validatePlayerData($playerData);
 
-        $player = new Player;
+        $player = new Player();
         $player->fill($playerData);
 
         $this->playerRepository->save($player);
@@ -34,6 +36,8 @@ class CreatePlayerAction extends PlayerAction
      */
     private function validatePlayerData(array $playerData): void
     {
+        // mostrar mensaje por consola
+        echo "Validating player data...\n";
         // TODO: Implement validation logic.
         // Throw an exception if the data is invalid.
     }
