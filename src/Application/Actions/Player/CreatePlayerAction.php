@@ -16,7 +16,7 @@ class CreatePlayerAction extends PlayerAction
     {
         $playerData = $this->request->getParsedBody();
 
-        $player = new Player;
+        $player = new Player();
         $player->fill($playerData);
 
         $this->playerRepository->save($player);
