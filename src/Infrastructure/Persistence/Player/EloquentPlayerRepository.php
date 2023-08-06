@@ -27,11 +27,11 @@ class EloquentPlayerRepository implements PlayerRepository
         $player = Player::query()
             ->where('id', $id)
             ->first();
-        
+
         if (!$player) {
             throw new PlayerNotFoundException($id);
         }
-        
+
         return $player;
     }
 
