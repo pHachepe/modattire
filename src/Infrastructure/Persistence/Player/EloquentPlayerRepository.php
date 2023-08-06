@@ -3,9 +3,9 @@
 namespace App\Infrastructure\Persistence\Player;
 
 use App\Domain\Player\Player;
-use App\Domain\Player\PlayerRepository;
 use App\Domain\Player\PlayerNotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Domain\Player\PlayerRepository;
 
 class EloquentPlayerRepository implements PlayerRepository
 {
@@ -24,11 +24,15 @@ class EloquentPlayerRepository implements PlayerRepository
      */
     public function findPlayerById(int $id): Player
     {
-        try {
-            return Player::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
+        $player = Player::query()
+            ->where('id', $id)
+            ->first();
+        
+        if (!$player) {
             throw new PlayerNotFoundException($id);
         }
+        
+        return $player;
     }
 
     /**
@@ -46,8 +50,8 @@ class EloquentPlayerRepository implements PlayerRepository
     public function deleteById(int $id): void
     {
         try {
-            // comprueba existe
-            $player = Player::findOrFail($id);
+            // comprueba existe llamando a la función findPlayerById
+            $player = $this->findPlayerById($id);
             // borra player
             $player->delete();
             //Player::destroy($id);
